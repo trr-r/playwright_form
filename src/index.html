@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Регистрация</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- <label for="check">
+        Я соглашаюсь с условиями сайта
+    </label>
+
+    <input
+        id="check"
+        type="checkbox"
+    > -->
+
+    <main>
+        <h1 id="title">Регистрация</h1>
+
+        <form id="registration-form">
+
+            <label for="name">
+                Имя
+            </label>
+
+            <input
+                id="name"
+                type="text"
+                placeholder="Введите имя"
+            >
+
+            <label for="email">
+                Email
+            </label>
+
+            <input
+                id="email"
+                type="email"
+                placeholder="Введите email"
+            >
+
+            <label for="age">
+                Возраст
+            </label>
+
+            <input
+                id="age"
+                type="number"
+                placeholder="Введите возраст"
+            >
+
+            <button id="submit-button" type="submit">
+                Зарегистрироваться
+            </button>
+
+        </form>
+
+        <p id="message"></p>
+        <button id="getData">Получить данные</button>
+        <div id="users"></div>
+
+        <button id="clearData">Очистить данные</button>
+
+    </main>
+
+    <script src="index.js" type="module"></script>
+
+</body>
+</html>
