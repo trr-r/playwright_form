@@ -1,4 +1,4 @@
-//import axios from "/axios"
+//import axios from "../node_modules/axios"
 
 const submitBtn = document.querySelector("#submit-button")
 const name = document.querySelector("#name")
@@ -20,12 +20,15 @@ submitBtn.addEventListener("click", (event) => {
 const getData = document.querySelector("#getData")
 const users = document.querySelector("#users")
 
-getData.addEventListener("click", () => {
-    //console.log("Тест")
-    // const response = axios.get("https://api.api-ninjas.com/v2/randomuser?count=1", {headers:{
-    //     "X-Api-Key":"XFH3YeKpMuG7NAgOcbptbuHftBNR1tDDQYzIJ7Af"
-    // }})
-    // console.log(response)
+getData.addEventListener("click", async () => {
+    console.log("Тест")
+    const response = await fetch("https://api.api-ninjas.com/v2/randomuser?count=1", {headers:{
+        "X-Api-Key":"XFH3YeKpMuG7NAgOcbptbuHftBNR1tDDQYzIJ7Af"
+    }})
+    const data = await response.json()
+    const{first_name, last_name, age, email} = data[0]
+    users.innerHTML = `user: ${first_name}, ${last_name}`
+    console.log(first_name, last_name, age, email)
 })
 
 const clearData = document.querySelector('#clearData')
