@@ -1,5 +1,3 @@
-//import axios from "../node_modules/axios"
-
 const submitBtn = document.querySelector("#submit-button")
 const name = document.querySelector("#name")
 const email = document.querySelector("#email")
@@ -20,16 +18,16 @@ submitBtn.addEventListener("click", (event) => {
 const getData = document.querySelector("#getData")
 const users = document.querySelector("#users")
 
-getData.addEventListener("click", async () => {
-    console.log("Тест")
-    const response = await fetch("https://api.api-ninjas.com/v2/randomuser?count=1", {headers:{
-        "X-Api-Key":"XFH3YeKpMuG7NAgOcbptbuHftBNR1tDDQYzIJ7Af"
-    }})
-    const data = await response.json()
-    const{first_name, last_name, age, email} = data[0]
-    users.innerHTML = `user: ${first_name}, ${last_name}`
-    console.log(first_name, last_name, age, email)
-})
+// getData.addEventListener("click", async () => {
+//     console.log("Тест")
+//     const response = await fetch("https://api.api-ninjas.com/v2/randomuser?count=1", {headers:{
+//         "X-Api-Key":"XFH3YeKpMuG7NAgOcbptbuHftBNR1tDDQYzIJ7Af"
+//     }})
+//     const data = await response.json()
+//     const{first_name, last_name, age, email} = data[0]
+//     users.innerHTML = `user: ${first_name}, ${last_name}`
+//     console.log(first_name, last_name, age, email)
+// })
 
 const clearData = document.querySelector('#clearData')
 
@@ -40,8 +38,14 @@ clearData.addEventListener("click", ()=>{
     message.innerHTML = ''
 })
 
-// 3. Доделать логику с проектом с формой:
-// - вместо текста "успешно" отображать "Добро пожаловать, "имя из инпута""!
-// Например, добро пожаловать, Анна!
-// Вначале реализовать эту логику, а потом под нее поменять тесты.
-// - добавить кнопку "очистить данные". При клике на нее инпуты должны очищаться, а сообщение из message исчезать. Сделать тесты, которые это проверят.
+getData.addEventListener("click", async () => {
+    console.log("Тест")
+    const response = await axios.get("https://api.api-ninjas.com/v2/randomuser?count=1", {headers:{
+        "X-Api-Key":"XFH3YeKpMuG7NAgOcbptbuHftBNR1tDDQYzIJ7Af"
+    }})
+    console.log(response)
+
+    const{first_name, last_name, age, email} = response.data[0]
+    users.innerHTML = `user: ${first_name}, ${last_name}`
+    console.log(first_name, last_name, age, email)
+})
