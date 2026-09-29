@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Регистрация</title>
 
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
+  <body>
     <!-- <label for="check">
         Я соглашаюсь с условиями сайта
     </label>
@@ -20,56 +20,47 @@
     > -->
 
     <main>
-        <h1 id="title">Регистрация</h1>
+      <h1 id="title">Регистрация</h1>
 
-        <form id="registration-form">
+      <form id="registration-form">
+        <label for="name"> Имя </label>
 
-            <label for="name">
-                Имя
-            </label>
+        <input id="name" type="text" placeholder="Введите имя" />
 
-            <input
-                id="name"
-                type="text"
-                placeholder="Введите имя"
-            >
+        <label for="email"> Email </label>
 
-            <label for="email">
-                Email
-            </label>
+        <input id="email" type="email" placeholder="Введите email" />
 
-            <input
-                id="email"
-                type="email"
-                placeholder="Введите email"
-            >
+        <label for="age"> Возраст </label>
 
-            <label for="age">
-                Возраст
-            </label>
+        <input id="age" type="number" placeholder="Введите возраст" />
 
-            <input
-                id="age"
-                type="number"
-                placeholder="Введите возраст"
-            >
+        <select name="pets" id="petSelect">
+          <option value="">Домашнее животное</option>
+          <option value="Собака">Собака</option>
+          <option value="Кот">Кот</option>
+          <option value="Хомяк">Хомяк</option>
+          <option value="Попугай">Попугай</option>
+          <option value="Паук">Паук</option>
+          <option value="Рыбки">Рыбки</option>
+        </select>
 
-            <button id="submit-button" type="submit">
-                Зарегистрироваться
-            </button>
+        <button id="submit-button" type="submit">Зарегистрироваться</button>
+      </form>
 
-        </form>
+      <p id="message"></p>
+      <button id="getData">Получить данные</button>
+      <div id="users"></div>
 
-        <p id="message"></p>
-        <button id="getData">Получить данные</button>
-        <div id="users"></div>
+      <button id="clearData">Очистить данные</button>
 
-        <button id="clearData">Очистить данные</button>
+      <p id="petName"></p>
 
+      <input id="btn" type="text" placeholder="Нажмите Enter" />
+      <p id="btnText"></p>
     </main>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/axios@1.7.7/dist/axios.min.js"></script>
     <script src="index.js" type="module"></script>
-
-</body>
+  </body>
 </html>
