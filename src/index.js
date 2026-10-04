@@ -43,24 +43,23 @@ clearData.addEventListener("click", () => {
   message.innerHTML = ""
 })
 
-// getData.addEventListener("click", () => {
-//   setTimeout(async () => {
-//     console.log("Тест")
-//     const response = await axios.get(
-//       "https://api.api-ninjas.com/v2/randomuser?count=1",
-//       {
-//         headers: {
-//           "X-Api-Key": "XFH3YeKpMuG7NAgOcbptbuHftBNR1tDDQYzIJ7Af",
-//         },
-//       }
-//     )
-//     console.log(response)
+getData.addEventListener("click", async () => {
+    console.log("Тест")
+    const response = await axios.get(
+      "https://api.api-ninjas.com/v2/randomuser?count=1",
+      {
+        headers: {
+          "X-Api-Key": "XFH3YeKpMuG7NAgOcbptbuHftBNR1tDDQYzIJ7Af",
+        },
+      }
+    )
+    console.log(response)
 
-//     const { first_name, last_name, age, email } = response.data[0]
-//     users.innerHTML = `user: ${first_name}, ${last_name}`
-//     console.log(first_name, last_name, age, email)
-//   }, 4000)
-// })
+    const { first_name, last_name, age, email } = response.data[0]
+    users.innerHTML = `user: ${first_name}, ${last_name}`
+    console.log(first_name, last_name, age, email)
+  
+})
 
 //Нужно написать вначале какую-то логику работы с select - создать его в html и в js прописать, 
 //что, например, при клике на кнопку будет выводиться на странице значение из селекта. 
