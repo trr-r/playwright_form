@@ -106,22 +106,24 @@ test.describe("Тесты главной страницы", () => {
 
   test("Мок запроса пользователей", async ({ page }) => {
     await page.route(
-      "https://jsonplaceholder.typicode.com/users/1",
+      "https://jsonplaceholder.typicode.com/users",
       (route) => {
         route.fulfill({
           status: 200,
           contentType: "application/json",
-          body: JSON.stringify({
-            id: 1,
-            name: "Тестовый пользователь",
-            email: "test@example.com",
-          }),
+          body: JSON.stringify([
+            {
+              id: 1,
+              name: "Тестовый пользователь",
+              email: "test@example.com",
+            }
+          ]),
         })
       }
     )
 
     await page.goto("/users.html")
     await page.locator("#btn").click()
-    await expect(page.locator("#users")).toContainText("Тестовый пользователь")
+    await expect(page.locator("#table")).toContainText("Тестовый пользователь")
   })
 })
