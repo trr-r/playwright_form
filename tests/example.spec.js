@@ -30,12 +30,19 @@ test.describe("Тесты главной страницы", () => {
     await page.goto(url)
   })
 
-  test("Проверка отображения элементов на главной страницы", async ({page}) => {
-    elements.forEach(({ locator, name }) => {
-      test.step(`Проверка отображения элемента ${name}`, async () => {
-        await expect(locator(page)).toBeVisible()
+  test("Проверка отображения элементов на главной страницы", async ({
+    page,
+  }) => {
+    // elements.forEach(({ locator, name }) => {
+    //   test.step(`Проверка отображения элемента ${name}`, async () => {
+    //     await expect(locator(page)).toBeVisible()
+    //   })
+    // })
+    for (const { locator, name } of elements) {
+      await test.step(`Проверка отображения элемента ${name}`, async () => {
+        await expect.soft(locator(page)).toBeVisible()
       })
-    })
+    }
   })
 
   test("Проверка текста в формах", async ({ page }) => {
@@ -105,22 +112,19 @@ test.describe("Тесты главной страницы", () => {
   })
 
   test("Мок запроса пользователей", async ({ page }) => {
-    await page.route(
-      "https://jsonplaceholder.typicode.com/users",
-      (route) => {
-        route.fulfill({
-          status: 200,
-          contentType: "application/json",
-          body: JSON.stringify([
-            {
-              id: 1,
-              name: "Тестовый пользователь",
-              email: "test@example.com",
-            }
-          ]),
-        })
-      }
-    )
+    await page.route("https://jsonplaceholder.typicode.com/users", (route) => {
+      route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify([
+          {
+            id: 1,
+            name: "Тестовый пользователь",
+            email: "test@example.com",
+          },
+        ]),
+      })
+    })
 
     await page.goto("/users.html")
     await page.locator("#btn").click()
